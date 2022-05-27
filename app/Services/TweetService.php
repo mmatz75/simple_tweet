@@ -8,4 +8,14 @@ class TweetService {
     public function getTweets() {
         return Tweet::orderby('created_at', 'DESC')->get();
     }
+
+    // auth
+    public function checkOwnTweet(int $userId, int $tweetId): bool {
+        $tweet = Tweet::where('id', $tweetId)->first();
+        if (!$tweet) {
+            return false;
+        }
+
+        return $tweet->user_id === $userId;
+    }
 }
