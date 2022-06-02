@@ -22,6 +22,9 @@ class IndexController extends Controller
         // dd($tweets);
         // $tweetService = new TweetService();
         $tweets = $tweetService->getTweets();
+        // dump($tweets);
+        // app(\App\Exceptions\Handler::class)->render(request(), throw new \Error('dump repoert.'));
+
         return view('tweet.index')
         ->with('tweets', $tweets);
     }
